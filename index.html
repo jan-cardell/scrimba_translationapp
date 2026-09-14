@@ -16,19 +16,21 @@
                 <label for="ftext">Text to translate 👇</label>
                 <textarea id="ftext" placeholder="Your text here ..."></textarea>
                 <label >Select language 👇</label>
-                <div>
-                    <input type="radio" id="french" value="french">
-                    <label for="french">French <img src="assets/fr-flag.png"></label>
+                <div id="radio-input">
+                    <div class="radio-class">
+                        <input type="radio" id="french" name="language" value="french">
+                        <label for="french">French <img src="assets/fr-flag.png"></label>
+                    </div>
+                    <div class="radio-class">
+                        <input type="radio" id="spanish" name="language" value="spanish">
+                        <label for="spanish">Spanish <img src="assets/sp-flag.png"></label>
+                    </div>
+                    <div class="radio-class">
+                        <input type="radio" id="japanese" name="language" value="japanese">
+                        <label for="japanese">Japanese <img src="assets/jpn-flag.png"></label>
+                    </div>
                 </div>
-                <div>
-                    <input type="radio" id="spanish" value="spanish">
-                    <label for="spanish">Spanish <img src="assets/sp-flag.png"></label>
-                </div>
-                                <div>
-                    <input type="radio" id="japanese" value="japanese">
-                    <label for="japanese">Japanese <img src="assets/jpn-flag.png"></label>
-                </div>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Translate" id="translate-btn">
             </form>
 
         </main>
