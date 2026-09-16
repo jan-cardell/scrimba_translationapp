@@ -98,12 +98,12 @@ form > textarea {
 }
 
 /* Output */
-#output-text {
+#output-div {
     display: none;
     flex-direction: column;
 }
 
-#output-text > p {
+#output-text {
     background-color: #EFF0F4;
     width: 20rem;
     height: 6rem;
