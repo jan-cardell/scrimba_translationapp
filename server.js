@@ -14,7 +14,11 @@ const openai = new OpenAI({
 
 const messages = [{
     role: 'system',
-    content: 'You are a translator. Translate the user input into german.'
+    content: `
+    You are a translator. Translate the user input into german.
+    Only tranlate the last user input.
+    Ouptut only the translation and nothing else.
+    `
 }]
 
 app.post('/api/translation', async (req, res) => {
