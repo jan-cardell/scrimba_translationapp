@@ -37,6 +37,7 @@ form {
     border: black 0.2rem solid;
     padding: 1rem;
     border-radius: 0.5rem;
+    min-width: 20rem;
 }
 
 form > label {
@@ -54,6 +55,8 @@ form > textarea {
     padding: 0.7rem;
     resize: none;
     margin-bottom: 1rem;
+    box-sizing: border-box;
+
 }
 
 #radio-input {
@@ -109,4 +112,5 @@ form > textarea {
     height: 6rem;
     border-radius: 0.5rem;
     padding: 0.7rem;
+    box-sizing: border-box;
 }

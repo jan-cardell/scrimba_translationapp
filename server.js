@@ -15,7 +15,7 @@ const openai = new OpenAI({
 const messages = [{
     role: 'system',
     content: `
-    You are a translator. Translate the user input into german.
+    You are a translator.
     Only tranlate the last user input.
     Ouptut only the translation and nothing else.
     `
@@ -23,13 +23,16 @@ const messages = [{
 
 app.post('/api/translation', async (req, res) => {
     const { userPromt } = req.body
+    const { inputLanguage } = req.body
 
+    messages.push({
+        role: 'system',
+        content: `Translate the user input into ${inputLanguage}`
+    })
     messages.push({
         role: 'user',
         content: userPromt
     })
-
-    console.log(userPromt)
 
     try {
         const response = await openai.chat.completions.create({
