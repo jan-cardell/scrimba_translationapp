@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-
+/* Header */
 header {
     background-image: url('assets/worldmap.png');
     display: flex;
@@ -27,6 +27,7 @@ header > img {
     margin-right: 2rem;
 }
 
+/* Form */
 form {
     display: flex;
     flex-direction: column;
@@ -88,4 +89,24 @@ form > textarea {
     width: 20rem;
     padding: 0.5rem 0 0.5rem 0;
     border-radius: 0.5rem;
+}
+
+#select-language {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+}
+
+/* Output */
+#output-text {
+    display: none;
+    flex-direction: column;
+}
+
+#output-text > p {
+    background-color: #EFF0F4;
+    width: 20rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
 }
