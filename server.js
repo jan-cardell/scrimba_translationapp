@@ -16,7 +16,6 @@ const messages = [{
     role: 'system',
     content: `
     You are a translator.
-    Only tranlate the last user input.
     Ouptut only the translation and nothing else.
     `
 }]
@@ -25,14 +24,15 @@ app.post('/api/translation', async (req, res) => {
     const { userPromt } = req.body
     const { inputLanguage } = req.body
 
-    messages.push({
+    messages[1] = {
         role: 'system',
         content: `Translate the user input into ${inputLanguage}`
-    })
-    messages.push({
+    }
+
+    messages[2] = {
         role: 'user',
         content: userPromt
-    })
+    }
 
     try {
         const response = await openai.chat.completions.create({
