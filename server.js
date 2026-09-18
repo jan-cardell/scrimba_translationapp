@@ -35,16 +35,24 @@ app.post('/api/translation', async (req, res) => {
     }
 
     try {
-        const response = await openai.chat.completions.create({
+        const stream = await openai.chat.completions.create({
             model: process.env.AI_MODEL,
-            messages
+            messages,
+            stream: true
         })
-        const translation = response.choices[0].message.content
+        
+        console.log(stream)
+        let translation = ''
 
-        res.json({ translation })
-    } catch(e) {
-        console.log(e)
-    }
+        for await (const chunk of stream) {
+            const chunkContent = chunk.choices[0].delta.content
+            if (chunkContent) {
+                res.write(chunkContent)
+            }
+        } res.end()
+        } catch(err){
+            console.log(err)
+        }
 })
 
 const PORT = process.env.PORT || 3001;

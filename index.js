@@ -1,3 +1,6 @@
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js"
+import DOMPurify from "https://cdn.jsdelivr.net/npm/dompurify/dist/purify.es.mjs"
+
 const translateBtn = document.getElementById('translate-btn')
 const selectLanguage = document.getElementById('select-language')
 const outputDiv = document.getElementById('output-div')
@@ -24,8 +27,21 @@ async function translate(e){
          })   
     })
 
-    const data = await response.json()
-    outputText.innerText = data.translation
+
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder()
+    let translation = ''
+
+    while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        const chunkText = decoder.decode(value, { stream: true })
+        translation += chunkText
+        console.log(translation)
+        let translationHtml = marked.parse(translation)
+        let safetranslation = DOMPurify.sanitize(translationHtml)
+        outputText.innerHTML = safetranslation
+    }
 
     } catch(error) {
         console.log(error)
